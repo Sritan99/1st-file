@@ -1,7 +1,7 @@
 import pgzrun
 import random
 
-
+game_over=False
 WIDTH=500
 HEIGHT=500
 
@@ -18,7 +18,11 @@ def draw():
     bee.draw()
     flower.draw()
     screen.draw.text("score:"+ str(score), center=(60,20), fontsize=30)
-
+    
+    if game_over==True:
+     screen.fill("pink")
+     screen.draw.text("You got a score of "+str(score),center=(250,250), fontsize=35)
+     
 score=0
 
 def update():
@@ -51,11 +55,14 @@ def rand():
 
 
 
-def time_up():
-  
-  
 
-clock.schedule_interval(time_up,5)
+def time_up():
+ global game_over
+ game_over=True
+ 
+ 
+
+clock.schedule_interval(time_up,20)
 
 
 
